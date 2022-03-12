@@ -8,7 +8,7 @@ from flask_jwt import JWT
 from resources.user import UserRegister
 from resources.item import Item, ItemList
 from resources.store import Store, StoreList
-from resources.transform import Transform, TransformBack
+from resources.transform import Transform, TransformBack, Report
 
 
 app = Flask(__name__)
@@ -28,6 +28,7 @@ api = Api(app)
 
 api.add_resource(Transform, '/transform/<string:url_name>')
 api.add_resource(TransformBack, '/<string:short_url_name>')
+api.add_resource(Report, '/short_url/reports')
 
 if __name__ == '__main__':
     from db import db
