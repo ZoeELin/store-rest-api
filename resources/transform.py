@@ -2,25 +2,25 @@ from flask_restful import Resource
 import base64
 import random
 import string
-from flask import redirect, make_response
+from flask import redirect, make_response, request
 from tabulate import tabulate
+from models.transform import TransformModel
 
-long_url = {}
-url_visit = {}
+# long_url = {}
+# url_visit = {}
 
 class Transform(Resource):
 
-    def post(self, url_name):
-        a = url_name
-        b  = base64.urlsafe_b64decode(a).decode('UTF-8')
+    def post(self, long_url_name):
+        decoded_long_url = base64.urlsafe_b64decode(long_url_name).decode('UTF-8')
 
-        if b in long_url:
-            return long_url[b]
+        mapping = TransformModel.find_by_long_url(decoded_long_url)
+        if not mapping:
+            mapping = TransformModel(long_url=decoded_long_url, short_url=self.random_func(), visit_times=0)
 
-        long_url[b] = self.random_func()
-        # print(type(b))
-        url_visit[long_url[b]] = 0
-        return long_url[b]
+        mapping.save_to_db()
+
+        return mapping.short_url
 
 
     def random_func(self):
@@ -31,35 +31,37 @@ class Transform(Resource):
 
 
     def check_duplication(self, ran_str):
-        return ran_str in long_url.values()
+        return TransformModel.find_by_short_url(ran_str)
 
 class TransformBack(Resource):
 
     def get(self, short_url_name):
-        for long, short in long_url.items():
-            if short == short_url_name:
-                url_visit[short] += 1
-                return redirect(long, code=302)
+        # print(request.headers)
+        # # For hacking
+        # for x in dir(request):
+        #     print('\n======================\n')
+        #     print(f'{x}: {getattr(request, x)}')
+
+        mapping = TransformModel.find_by_short_url(short_url_name)
+        if mapping:
+            mapping.visit_times += 1
+            mapping.save_to_db()
+            return redirect(mapping.long_url, code=302)
 
         return "Not exist.", 404
 
     def delete(self, short_url_name):
-        if short_url_name in url_visit:
-            del url_visit[short_url_name]
-            for long, short in long_url.items():
-                if short == short_url_name:
-                    del long_url[long]
-                    break
+        mapping = TransformModel.find_by_short_url(short_url_name)
+        mapping.delete_from_db()
 
 
 class Report(Resource):
 
     def get(self):
 
-        data = [[key, value] for key, value in url_visit.items()]
-        table = tabulate(data, headers=["short url", "times"])
-        print(table)
-        # return table
+        mappings = TransformModel.find_all()
+        data = [[mapping.short_url, mapping.long_url, mapping.visit_times] for mapping in mappings]
+        table = tabulate(data, headers=["short url", "long url", "times"])
         response = make_response(table)
         response.headers['content-type'] = 'text/text'
         return response
