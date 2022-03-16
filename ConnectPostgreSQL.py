@@ -47,4 +47,5 @@ class PostgresBaseManager:
 if __name__ == '__main__':
     postgres_manager = PostgresBaseManager()
     postgres_manager.runServerPostgresDb()
+    print("Opened database successfully")
     postgres_manager.closePostgresConnection()
