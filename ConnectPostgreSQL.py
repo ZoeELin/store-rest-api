@@ -19,11 +19,11 @@ class PostgresBaseManager:
         :return: 連接 Heroku Postgres SQL 認證用
         """
         conn = psycopg2.connect(
-            database=self.database,
-            user=self.user,
-            password=self.password,
-            host=self.host,
-            port=self.port)
+            database = self.database,
+            user = self.user,
+            password = self.password,
+            host = self.host,
+            port = self.port)
         return conn
 
     def closePostgresConnection(self):
