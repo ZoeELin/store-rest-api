@@ -1,7 +1,5 @@
 import psycopg2
 
-import psycopg2
-
 
 class PostgresBaseManager:
 
@@ -43,9 +41,16 @@ class PostgresBaseManager:
         self.conn.commit()
         cur.close()
 
+    def createTable(self):
+        cursor = self.conn.cursor()
+        cursor.execute("CREATE TABLE transform_url (long_url VARCHAR, short_url VARCHAR PRIMARY KEY, userid INTEGER);")
+        print("Create table successfully!")
+        cursor.close()
+
 
 if __name__ == '__main__':
     postgres_manager = PostgresBaseManager()
     postgres_manager.runServerPostgresDb()
     print("Opened database successfully")
+    postgres_manager.createTable()
     postgres_manager.closePostgresConnection()
