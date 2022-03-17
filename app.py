@@ -5,7 +5,7 @@ from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
 
-from ConnectPostSQL import PostgresBaseManager
+from ConnectPostgreSQL import PostgresBaseManager
 from resources.transform import Transform, TransformBack, Report
 
 
