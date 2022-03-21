@@ -16,7 +16,7 @@ class Transform(Resource):
 
         if not mapping:
             mapping = TransformModel(long_url=decoded_long_url, short_url=self.random_func(), visit_times=0)
-            mapping.save_to_db()
+        mapping.save_to_db()
 
         return mapping.short_url
 
