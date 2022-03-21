@@ -17,8 +17,8 @@
                     <div class="brand header-brand">
                         <h1 class="m-0">
                             <a href="#">
-								<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-								    <title>Ellie</title>
+								<!-- <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"> -->
+								    <title>ZoeLin</title>
 								    <defs>
 								        <linearGradient x1="0%" y1="0%" y2="100%" id="logo-a">
 								            <stop stop-color="#4353FF" offset="0%"/>
@@ -63,7 +63,8 @@
 	                                <a class="button button-primary button-block" id="shorten" onclick="shorten_url()">Shorten!</a>
 	                            </div>
 	                        </div>
-	                        <h4 class="hero-paragraph is-revealing" id="result"></h4>
+                          <h2 class="hero-paragraph is-revealing" id="result1"></h2>
+	                        <u><h3 class="hero-paragraph is-revealing" id="result2"></h3></u>
 						</div>
 						<div class="hero-illustration">
 							<div class="hero-bg">
@@ -352,9 +353,9 @@
 											    </g>
 											</svg>
 		                                </div>
-		                                <h4 class="feature-title m-0">Discover</h4>
+		                                <h4 class="feature-title m-0">何謂短網址服務</h4>
 									</div>
-	                                <p class="text-sm mb-0">A pseudo-Latin text used in web design, layout, and printing in place of things to emphasise design elements.</p>
+	                                <p class="text-sm mb-0">此服務可以提供較短的網址以代替原來可能較長或過於複雜的網址，並且使用者存取縮短後的網址時，可以直接使用重新導向到原來的網址。</p>
 	                            </div>
 	                        </div>
 							<div class="feature">
@@ -369,9 +370,9 @@
 											    </g>
 											</svg>
 		                                </div>
-		                                <h4 class="feature-title m-0">Discover</h4>
+		                                <h4 class="feature-title m-0">短網址的好處</h4>
 									</div>
-	                                <p class="text-sm mb-0">A pseudo-Latin text used in web design, layout, and printing in place of things to emphasise design elements.</p>
+	                                <p class="text-sm mb-0">大部分的連結過於複雜，造成了網址過長、參雜兩種以上的語言而難以記憶或手動輸入，導致長網址必須透過複製才能傳播，因此需要透過縮短網址的功能來達到網址縮短的目的。</p>
 	                            </div>
 	                        </div>
 							<div class="feature">
@@ -388,9 +389,9 @@
 											    </g>
 											</svg>
 		                                </div>
-		                                <h4 class="feature-title m-0">Discover</h4>
+		                                <h4 class="feature-title m-0">實現的方法</h4>
 									</div>
-	                                <p class="text-sm mb-0">A pseudo-Latin text used in web design, layout, and printing in place of things to emphasise design elements.</p>
+	                                <p class="text-sm mb-0">利用鍵值對應方式，將網址對應成被縮短的代碼來散佈使用。使用時，系統先查詢出原本的網址，再以網址重導向（URL redirection）來將縮短後的位址重新導向到原來的網址。</p>
 	                            </div>
 	                        </div>
 						</div>
@@ -427,33 +428,7 @@
 			</div>
             <div class="container">
                 <div class="site-footer-inner has-top-divider">
-                    <div class="footer-copyright">&copy; 2018 Ellie, all rights reserved</div>
-					<ul class="footer-social-links list-reset">
-						<li>
-							<a href="#">
-								<span class="screen-reader-text">Facebook</span>
-								<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-									<path d="M6.023 16L6 9H3V6h3V4c0-2.7 1.672-4 4.08-4 1.153 0 2.144.086 2.433.124v2.821h-1.67c-1.31 0-1.563.623-1.563 1.536V6H13l-1 3H9.28v7H6.023z" fill="#FFFFFF"/>
-								</svg>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="screen-reader-text">Twitter</span>
-								<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-									<path d="M16 3c-.6.3-1.2.4-1.9.5.7-.4 1.2-1 1.4-1.8-.6.4-1.3.6-2.1.8-.6-.6-1.5-1-2.4-1-1.7 0-3.2 1.5-3.2 3.3 0 .3 0 .5.1.7-2.7-.1-5.2-1.4-6.8-3.4-.3.5-.4 1-.4 1.7 0 1.1.6 2.1 1.5 2.7-.5 0-1-.2-1.5-.4C.7 7.7 1.8 9 3.3 9.3c-.3.1-.6.1-.9.1-.2 0-.4 0-.6-.1.4 1.3 1.6 2.3 3.1 2.3-1.1.9-2.5 1.4-4.1 1.4H0c1.5.9 3.2 1.5 5 1.5 6 0 9.3-5 9.3-9.3v-.4C15 4.3 15.6 3.7 16 3z" fill="#FFFFFF"/>
-								</svg>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="screen-reader-text">Google</span>
-								<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-									<path d="M7.9 7v2.4H12c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4 0-2.4 2-4.4 4.3-4.4 1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 1.7 9.9 1 8 1 4.1 1 1 4.1 1 8s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H7.9z" fill="#FFFFFF"/>
-								</svg>
-							</a>
-						</li>
-					</ul>
+                    <div class="footer-copyright">&copy; 2022 ZoeLin, all rights reserved</div>
                 </div>
             </div>
         </footer>
@@ -470,7 +445,8 @@
 				.then(response => response.json())
 				.then(function(short_url_rand_str) {
 					console.log(short_url_rand_str)
-					document.getElementById("result").innerHTML = "Your shorten url: http://www.zoe-lin.me/" + short_url_rand_str;
+          document.getElementById("result1").innerHTML = "Your shorten url:<br>";
+					document.getElementById("result2").innerHTML = "http://www.zoe-lin.me/" + short_url_rand_str;
 				});
 		}
 	</script>
