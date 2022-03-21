@@ -8,7 +8,6 @@ from flask_jwt import JWT
 from resources.transform import Transform, TransformBack, UrlReport
 
 from db import db
-db.init_app(app)
 
 
 app = Flask(__name__)
@@ -16,6 +15,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://lgectutbchtebn:0dc73cbc693
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
 api = Api(app)
+db.init_app(app)
 
 api.add_resource(Transform, '/transform/<string:long_url_name>')
 api.add_resource(TransformBack, '/<string:short_url_name>')
