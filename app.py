@@ -17,7 +17,6 @@ api = Api(app)
 api.add_resource(Transform, '/transform/<string:long_url_name>')
 api.add_resource(TransformBack, '/<string:short_url_name>')
 api.add_resource(UrlReport, '/short_url/reports')
-# api.add_resource()
 
 if __name__ == '__main__':
     from db import db
