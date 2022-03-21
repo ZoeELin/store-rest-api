@@ -18,7 +18,8 @@ api.add_resource(Transform, '/transform/<string:long_url_name>')
 api.add_resource(TransformBack, '/<string:short_url_name>')
 api.add_resource(UrlReport, '/short_url/reports')
 
+db.init_app(app)
+
 if __name__ == '__main__':
     from db import db
-    db.init_app(app)
     app.run(port=5000, debug=True)
