@@ -46,7 +46,7 @@ class VisitorModel(db.Model):
 
     @classmethod
     def find_by_short_url(cls, url):
-        return cls.query.filter_by(short_url=url).first()
+        return cls.query.filter_by(short_url=url).all()
 
     def save_to_db(self):
         db.session.add(self)

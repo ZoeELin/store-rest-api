@@ -5,7 +5,7 @@ from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
 
-from resources.transform import Transform, TransformBack, UrlReport
+from resources.transform import Transform, TransformBack, UrlReport, VisitorReport
 
 from db import db
 
@@ -20,6 +20,7 @@ db.init_app(app)
 api.add_resource(Transform, '/transform/<string:long_url_name>')
 api.add_resource(TransformBack, '/<string:short_url_name>')
 api.add_resource(UrlReport, '/short_url/reports')
+api.add_resource(VisitorReport, '/short_url/report/<string:short_url_name>')
 
 
 if __name__ == '__main__':

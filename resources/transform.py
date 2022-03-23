@@ -71,3 +71,20 @@ class UrlReport(Resource):
         response = make_response(table)
         response.headers['content-type'] = 'text/text'
         return response
+
+class VisitorReport(Resource):
+
+    def get(self, short_url_name):
+        all_visitors = []
+        header_recorded = ['host', 'remote_addr', 'accept_encodings', 'accept_languages', 'base_url', 'path', 'server', 'user_agent']
+        visitor_mappings = VisitorModel.find_by_short_url(short_url_name)
+
+        for mapping in visitor_mappings:
+            data = [[record, getattr(mapping, record)]for record in header_recorded]
+            all_visitors += (data + [[]])
+            mapping = VisitorModel.find_by_short_url(short_url_name)
+
+        table = tabulate(all_visitors)
+        response = make_response(table)
+        response.headers['content-type'] = 'text/text'
+        return response
